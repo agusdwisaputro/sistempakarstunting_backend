@@ -1,4 +1,6 @@
 // index.js
+import 'dotenv/config'; // ⬅️ WAJIB: agar file .env terbaca
+
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -10,7 +12,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import loginuserRoutes from "./routes/loginuserRoutes.js";
 import loginadminRoutes from "./routes/loginadminRoutes.js";
 import saveRoutes from "./routes/saveRoutes.js";
-import knowledgeBaseRoutes from "./routes/knowledgeBaseRoutes.js"
+import knowledgeBaseRoutes from "./routes/knowledgeBaseRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -34,7 +36,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080; // gunakan dari .env jika tersedia
 app.listen(PORT, () =>
   console.log(`Server berjalan dengan baik di port ${PORT}`)
 );
